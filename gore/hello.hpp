@@ -1,0 +1,18 @@
+/*
+ * Copyright 2025-02-18 14:00:54 satanisticmicrowave. All rights reserved.
+ *
+ * Hello world test header
+ *
+ * Author: satanisticmicrowave <satanisticmicrowave@ya.ru>
+ * Date: 2025-02-18 14:00:54
+ * File: gore/hello.hpp
+ *
+ * Made with love :3
+ */
+
+#ifndef GORE_HELLO_H
+#define GORE_HELLO_H
+
+void hello();
+
+#endif // !GORE_HELLO_H
