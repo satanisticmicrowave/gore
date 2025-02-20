@@ -77,7 +77,9 @@ public:
     _dur realtime = get_current_time();
     auto changed_time = (realtime - _time_last) * _time_scale;
 
-    _time += changed_time;
+    _time += std::chrono::duration_cast<std::chrono::steady_clock::duration>(
+        changed_time);
+
     _time_last = realtime;
 
     return get_last_time();
