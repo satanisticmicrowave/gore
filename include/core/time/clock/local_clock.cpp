@@ -10,8 +10,8 @@
  * Made with love :3
  */
 
-#include "core/time/local_clock.hpp"
-#include "core/time/basic_clock.hpp"
+#include "core/time/clock/local_clock.hpp"
+#include "core/time/clock/basic_clock.hpp"
 #include <chrono>
 #include <mutex>
 
