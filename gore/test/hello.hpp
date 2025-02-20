@@ -5,14 +5,14 @@
  *
  * Author: satanisticmicrowave <satanisticmicrowave@ya.ru>
  * Date: 2025-02-18 14:00:54
- * File: gore/hello.hpp
+ * File: gore/test/hello.hpp
  *
  * Made with love :3
  */
 
-#ifndef GORE_HELLO_H
-#define GORE_HELLO_H
+#ifndef TEST_HELLO_H
+#define TEST_HELLO_H
 
 void hello();
 
-#endif // !GORE_HELLO_H
+#endif // !TEST_HELLO_H

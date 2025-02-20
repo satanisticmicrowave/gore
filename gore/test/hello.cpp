@@ -5,7 +5,7 @@
  *
  * Author: satanisticmicrowave <satanisticmicrowave@ya.ru>
  * Date: 2025-02-18 14:00:28
- * File: gore/hello.cpp
+ * File: gore/test/hello.cpp
  *
  * Made with love :3
  */
