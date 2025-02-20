@@ -55,7 +55,6 @@ set (CMAKE_RANLIB "/usr/bin/llvm-ranlib")
 
 ## Connect libraries
 find_package (OpenAL REQUIRED)
-find_package (Boost REQUIRED)
 find_package (VulkanHeaders REQUIRED)
 
 ## Create a library
@@ -65,10 +64,9 @@ set_target_properties (${PROJECT_NAME} PROPERTIES VERSION ${PROJECT_VERSION})
 set_target_properties (${PROJECT_NAME} PROPERTIES SOVERSION ${PROJECT_VERSION_MAJOR})
 
 ## Link libraries
-target_link_libraries (${PROJECT_NAME} 
+target_link_libraries (${PROJECT_NAME} PRIVATE
 OpenAL::OpenAL 
 vulkan-headers::vulkan-headers 
-boost::boost
 )
 
 ## Move library to library path
