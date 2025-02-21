@@ -24,7 +24,7 @@ namespace gore::logger {
 
 void logger::log(const basic_message &message, std::string title,
                  std::string text) noexcept {
-  std::cout << core_logger::instance().fetch(message, title, text) << std::endl;
+  std::cout << core_logger::instance().fetch(message, title, text);
 }
 
 }; // namespace gore::logger

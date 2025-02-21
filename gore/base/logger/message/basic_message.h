@@ -52,7 +52,7 @@ public:
                      std::string text) const noexcept {
     std::ostringstream oss;
 
-    oss << format(time, title) << _text()(std::format(" ---\n{}\n", text));
+    oss << format(time, title) << _text()(std::format(" ---\n{}\n\n", text));
 
     return oss.str();
   }
