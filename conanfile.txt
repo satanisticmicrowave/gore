@@ -3,6 +3,7 @@
 [requires]
 openal/1.22.2
 vulkan-headers/1.3.296.0
+fmt/11.1.3
 
 [layout]
 cmake_layout
@@ -13,4 +14,4 @@ CMakeDeps
 [options]
 openal/*:shared = False
 vulkan-headers/*:shared = False
-
+fmt/*:shared = False

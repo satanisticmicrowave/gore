@@ -11,6 +11,11 @@
  */
 
 #include "hello.hpp"
+
+#include <fmt/color.h>
 #include <iostream>
 
-void hello() { std::cout << "Hello, world!" << std::endl; }
+void hello() {
+  std::cout << fmt::format(fg(fmt::rgb(153, 255, 153)), "Hello, world!")
+            << std::endl;
+}
