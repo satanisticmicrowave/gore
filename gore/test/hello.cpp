@@ -10,7 +10,7 @@
  * Made with love :3
  */
 
-#include "hello.hpp"
+#include "hello.h"
 
 #include <fmt/color.h>
 #include <iostream>

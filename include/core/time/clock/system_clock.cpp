@@ -40,6 +40,8 @@ void system_clock::scale_speed(float scale) noexcept {
   _clock.scale_speed(scale);
 }
 
+void system_clock::update_clock() noexcept { _clock.get_internal_time(); }
+
 const std::string system_clock::to_string() const noexcept {
   std::lock_guard<std::mutex> lock(_mtx);
 

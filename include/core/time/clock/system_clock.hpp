@@ -30,6 +30,7 @@ public:
   DEFAULT_CLOCK_DURATION get_last_time() noexcept;
 
   void scale_speed(float scale) noexcept;
+  void update_clock() noexcept;
 
   float get_speed() noexcept;
   const std::string to_string() const noexcept;
