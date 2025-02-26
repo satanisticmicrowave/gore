@@ -9,6 +9,7 @@
 .ONESHELL:
 
 ._mk-build:
+	$(MAKE) clean
 	mkdir -p build
 
 ._build:
@@ -16,17 +17,21 @@
 	cmake --build build --config $(_BUILD_TYPE)
 
 build-debug:
-	$(MAKE) _mk-build
+	$(MAKE) ._mk-build
 	export _BUILD_TYPE=Debug
 	$(MAKE) ._build
+	$(MAKE) install
+
 
 build-release:
-	$(MAKE) _mk-build
+	$(MAKE) ._mk-build
 	export _BUILD_TYPE=Release
 	$(MAKE) ._build
-
+	
 install:
 	cd build && sudo make install
 
 clean:
 	rm -rf build
+	sudo rm -rf /usr/local/lib64/libgore*
+	sudo rm -rf /usr/local/include/gore
