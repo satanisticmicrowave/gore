@@ -20,7 +20,6 @@ build-debug:
 	$(MAKE) ._mk-build
 	export _BUILD_TYPE=Debug
 	$(MAKE) ._build
-	$(MAKE) install
 
 
 build-release:
