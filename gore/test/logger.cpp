@@ -25,12 +25,12 @@ void logger_test() {
   std::this_thread::sleep_for(123ms);
 
   logger.log(gore::logger::message::WARNING,
-             "Warning! This test unexpectly working!", "Your mom is slut.");
+             "Warning! This test unexpectly working!", "Hehe.");
   std::this_thread::sleep_for(1399ms);
 
   logger.log(gore::logger::message::ERROR, "Aww, error!", "*error*");
   std::this_thread::sleep_for(5634ms);
 
   logger.log(gore::logger::message::FATAL, "!!! FATAL ERROR !!!",
-             "Your mom is dirty slut.\nPlease, kill yourself.");
+             "Please, kill yourself.");
 }

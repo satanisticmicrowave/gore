@@ -17,7 +17,7 @@
 #include <mutex>
 #include <sstream>
 
-#include "core/time/clock/basic_clock.hpp"
+#include "basic_clock.hpp"
 
 /*
  * Class local_clock [DEFAULT]
