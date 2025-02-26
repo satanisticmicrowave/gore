@@ -5,13 +5,13 @@
  *
  * Author: satanisticmicrowave <satanisticmicrowave@ya.ru>
  * Date: 2025-02-24 02:31:16
- * File: gore/core/platform.h
+ * File: gore/core/sys/platform.h
  *
  * Made with love :3
  */
 
-#ifndef CORE_PLATFORM_H
-#define CORE_PLATFORM_H
+#ifndef SYS_PLATFORM_H
+#define SYS_PLATFORM_H
 
 enum platform {
   PLATFORM_WINDOWS,
@@ -33,4 +33,4 @@ const platform GORE_PLATFORM = PLATFORM_LINUX;
 const platform GORE_PLATFORM = PLATFORM_UNKNOWN;
 #endif
 
-#endif // !CORE_PLATFORM_H
+#endif // !SYS_PLATFORM_H
