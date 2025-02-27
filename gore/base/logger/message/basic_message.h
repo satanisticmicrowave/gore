@@ -57,6 +57,25 @@ public:
     return oss.str();
   }
 
+  std::string log(std::string time, std::string title) const noexcept {
+    std::ostringstream oss;
+
+    oss << fmt::format("[{}] {} - {}\n", time,
+                       std::format("[{}]", _descriptor()),
+                       std::format("{}", title));
+
+    return oss.str();
+  };
+
+  std::string log(std::string time, std::string title,
+                  std::string text) const noexcept {
+    std::ostringstream oss;
+
+    oss << log(time, title) << std::format(" ---\n{}\n\n", text);
+
+    return oss.str();
+  }
+
 protected:
   virtual TYPE_DESCRIPTOR _descriptor() const noexcept = 0;
 
