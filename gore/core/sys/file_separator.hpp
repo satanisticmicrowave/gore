@@ -14,7 +14,7 @@
 #define SYS_FILE_SEPARATOR_H
 
 #if defined(_WIN32)
-#define FSPEPARATOR "\\"
+#define FSEPARATOR "\\"
 #else
 #define FSEPARATOR "/"
 #endif
