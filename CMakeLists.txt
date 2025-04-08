@@ -82,7 +82,7 @@ install(
 install(
   DIRECTORY ${PROJECT_LIBRARY_DIR}
   DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}"
-  FILES_MATCHING PATTERN "*.h"
+  FILES_MATCHING PATTERN "*.hpp"
 )
 
 ## Create & configure PC file
