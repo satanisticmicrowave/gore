@@ -17,7 +17,6 @@
 
 #include "../../gore/core/object/object.hpp"
 #include "../../gore/time/time.hpp"
-#include <chrono>
 #include <ostream>
 #include <source_location>
 #include <sstream>
