@@ -30,11 +30,11 @@ namespace gore::core::object {
  * Class identificator [DEFAULT]
  */
 
-template <typename _object> class identificator {
+template <typename _object> class identificator final {
 public:
-  static identificator<_object> create(
-      _object *_obj,
-      const std::source_location &location = std::source_location::current()) {
+  static identificator<_object>
+  create(_object *_obj, const std::source_location &location =
+                            std::source_location::current()) noexcept {
 
     if (_obj == nullptr) {
       exception::crash(std::format("Cannot create an unique id for {}!",
@@ -72,7 +72,7 @@ public:
   }
 
 private:
-  explicit identificator(size_t _id) : _id(_id) {}
+  explicit identificator(size_t _id) noexcept : _id(_id) {}
 
   size_t _id;
 };

@@ -22,9 +22,9 @@
 
 namespace gore::core::exception {
 
-inline void
-crash(std::string message,
-      const std::source_location &location = std::source_location::current()) {
+inline void crash(std::string message,
+                  const std::source_location &location =
+                      std::source_location::current()) noexcept {
 
   std::set_terminate([]() { std::abort(); });
 
