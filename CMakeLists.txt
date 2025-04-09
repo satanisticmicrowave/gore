@@ -63,6 +63,7 @@ add_library (${PROJECT_NAME} SHARED ${PROJECT_SOURCES} ${PROJECT_LIBRARY} ${PROJ
 
 set_target_properties (${PROJECT_NAME} PROPERTIES VERSION ${PROJECT_VERSION})
 set_target_properties (${PROJECT_NAME} PROPERTIES SOVERSION ${PROJECT_VERSION_MAJOR})
+set_target_properties (${PROJECT_NAME} PROPERTIES LINKER_LANGUAGE CXX)
 
 ## Link libraries
 target_link_libraries (${PROJECT_NAME} PRIVATE
