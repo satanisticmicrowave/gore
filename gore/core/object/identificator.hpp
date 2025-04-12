@@ -22,7 +22,6 @@
 #include <iomanip>
 #include <iostream>
 #include <source_location>
-#include <sstream>
 
 namespace gore::core::object {
 
@@ -46,16 +45,6 @@ public:
     std::hash<uintptr_t> hasher;
 
     return identificator(hasher(addr));
-  }
-
-  friend std::ostringstream &
-  operator<<(std::ostringstream &oss,
-             const identificator<_object> _id) noexcept {
-
-    oss << "0x" << std::hex << std::setfill('0')
-        << std::setw(sizeof(_id._id) * 2) << _id._id;
-
-    return oss;
   }
 
   friend std::ostream &operator<<(std::ostream &os,
