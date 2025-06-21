@@ -1,0 +1,46 @@
+CompileFlags:
+  Add: 
+
+    - -std=c++23
+    - -march=native
+    - -Wall
+    - -I${workspaceFolder}/include
+    - -I${workspaceFolder}/build/generators
+    - -I${workspaceFolder}/build/generators/fmt
+  
+  Remove: 
+    - -Werror
+
+Diagnostics:
+  ClangTidy:
+    Add:
+      - modernize-*
+      - performance-*
+      - readability-*
+      - bugprone-*
+      - concurrency-*
+      - cppcoreguidelines-*
+    Remove:
+      - modernize-use-trailing-return-type
+  
+  UnusedIncludes: Strict
+
+Index:
+  Background: Build
+  Threads: 0
+
+  MultiVersion: All
+
+Hover:
+  ShowAKA: true
+
+Completion:
+  EnableSnippets: true
+
+HeaderInsertion: Never
+
+CheckOptions:
+  - key: readability-suspicious-call-argument
+    value: '0'
+  - key: cppcoreguidelines-avoid-magic-numbers.IgnoredNumbers
+    value: '0,1,2,3,4,8,16,32,64,128,256,512,1024'
