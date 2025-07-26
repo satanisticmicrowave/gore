@@ -54,9 +54,8 @@ struct platform_info {
   const char *name;
 };
 
-inline const constexpr platform_info current_platform = {
-    .id = _gore_platform, .name = _gore_platform_name};
+consteval platform_info current_platform();
 
-}; // namespace gore::core::platform
+} // namespace gore::core::platform
 
 #endif // GORE_PLATFORM_HPP_486839
