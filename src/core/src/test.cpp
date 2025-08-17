@@ -7,6 +7,4 @@
  * ~ gore
  */
 
-#include "../include/gore/core/test.hpp"
-
 int a() { return 0; }
