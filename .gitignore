@@ -31,7 +31,9 @@
 *.out
 *.app
 
+compile_commands.json
+
+out/
 .cache/
-build/
 .idea/
 CMakeUserPresets.json

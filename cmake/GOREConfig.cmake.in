@@ -1,0 +1,5 @@
+@PACKAGE_INIT@
+
+include(${CMAKE_CURRENT_LIST_DIR}/GORETargets.cmake)
+set (GORE_PUBLIC_HEADERS ${CMAKE_CURRENT_LIST_DIR}/../../../include)
+
