@@ -9,8 +9,11 @@
  * ~ gore
  */
 
- #ifndef GORE_CORE_HPP_630992
- #define GORE_CORE_HPP_630992
+#ifndef GORE_CORE_HPP_630992
+#define GORE_CORE_HPP_630992
 
- #endif // GORE_CORE_HPP_630992
+#include <gore/gore_api.hpp>
 
+void GORE_API hello();
+
+#endif // GORE_CORE_HPP_630992

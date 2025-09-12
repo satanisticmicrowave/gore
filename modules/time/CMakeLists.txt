@@ -1,9 +1,9 @@
 ###
 ### Author: satanisticmicrowave <satanisticmicrowave@ya.ru>
-### Date: 2025-08-24 10:25:30
-### Package: modules/core/CMakeLists.txt 
+### Date: 2025-09-12 01:55:12
+### Package: modules/time/CMakeLists.txt 
 ###
-### Gore core module
+### Gore time module
 ###
 ### ~ gore
 ###
@@ -11,10 +11,11 @@
 cmake_minimum_required(VERSION 3.10)
 
 ## ------------------------------------------------------------------------
-## ## MODULE CORE
+## ## MODULE TIME
 ## ------------------------------------------------------------------------
+
 set (_project_version 1.0.0)
-project(core_module LANGUAGES CXX VERSION ${_project_version})
+project(time_module LANGUAGES CXX VERSION ${_project_version})
 
 ## ------------------------------------------------------------------------
 ## ## File paths
@@ -26,55 +27,60 @@ set(_src_dir     ${_mod_dir}/src)
 ## ------------------------------------------------------------------------
 ## ## Collect source files (implementation and private headers)
 ## ------------------------------------------------------------------------
-file(GLOB_RECURSE _core_src
+file(GLOB_RECURSE _time_src
     RELATIVE ${_mod_dir}
     ${_src_dir}/*.cpp
 )
-file(GLOB_RECURSE _core_priv_headers
+file(GLOB_RECURSE _time_priv_headers
     RELATIVE ${_mod_dir}
     ${_include_dir}/p_*.hpp
 )
+
 ## Private sources and headers are part of the target but not installed
-add_library(core SHARED
-    ${_core_src}
-    ${_core_priv_headers}
+add_library(time SHARED
+    ${_time_src}
+    ${_time_priv_headers}
 )
 
 ## Add export definition
-target_compile_definitions(core PRIVATE GORE_EXPORTS)
+target_compile_definitions(time PRIVATE GORE_EXPORTS)
 
 ## ------------------------------------------------------------------------
 ## ## Collect public headers (exclude p_*.hpp)
 ## ------------------------------------------------------------------------
-file(GLOB_RECURSE _core_all_headers
+file(GLOB_RECURSE _time_all_headers
     RELATIVE ${_include_dir}
     ${_include_dir}/*.hpp
 )
 
 ## Remove private headers from the list
-list(FILTER _core_all_headers EXCLUDE REGEX ".*/p_.*\\.hpp$")
-list(FILTER _core_all_headers EXCLUDE REGEX "^p_.*\\.hpp$")
+
+list(FILTER _time_all_headers EXCLUDE REGEX ".*/p_.*\\.hpp$")
+list(FILTER _time_all_headers EXCLUDE REGEX "^p_.*\\.hpp$")
+
 
 ## ------------------------------------------------------------------------
 ## ## Interface include dirs for public headers
 ## ------------------------------------------------------------------------
-target_include_directories(core
+target_include_directories(time
     PUBLIC
         $<BUILD_INTERFACE:${_include_dir}>
-        $<INSTALL_INTERFACE:include/gore/core>
+        $<INSTALL_INTERFACE:include/gore/time>
     PRIVATE
         $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}>
 )
 
 ## ------------------------------------------------------------------------
 ## ## Register public headers for root installation
+
 ## ------------------------------------------------------------------------
-set(_core_public_headers ${_core_all_headers} PARENT_SCOPE)
+
+set(_time_public_headers ${_time_all_headers} PARENT_SCOPE)
 
 ## ------------------------------------------------------------------------
 ## ## Dependencies
 ## ------------------------------------------------------------------------
 ## link libgore_common automatically via root umbrella
-target_link_libraries(core
+target_link_libraries(time
     PUBLIC libgore_common
 )

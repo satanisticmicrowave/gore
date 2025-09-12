@@ -7,7 +7,17 @@
 ### ~ gore
 ###
 
-cmake_minimum_required(VERSION 3.10)
+cmake_minimum_required(VERSION 3.15)
+
+## Enable new CMP0091 policy
+if(POLICY CMP0091)
+  cmake_policy(SET CMP0091 NEW)
+endif()
+
+set(CMAKE_SUPPRESS_REGENERATION TRUE)
+
+## Enable exporting compile commands
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 ## Project base info
 set(_project_name "GORE")
@@ -28,12 +38,14 @@ endif()
 if(NOT EXISTS ${GORE_CONAN_TOOLCHAIN_PATH})
   message(FATAL_ERROR "GORE_CONAN_TOOLCHAIN_PATH points to non-existent file: ${GORE_CONAN_TOOLCHAIN_PATH}")
 endif()
+
+## Include conan2 toolchain
 include(${GORE_CONAN_TOOLCHAIN_PATH})
 
 ## Include CMake package helpers
 include(CMakePackageConfigHelpers)
 
-## File pathsprint("asd")
+## File paths
 set(_project_common_dir ${PROJECT_SOURCE_DIR}/common)
 set(_project_modules_dir ${PROJECT_SOURCE_DIR}/modules)
 
@@ -43,14 +55,15 @@ set(_project_modules_dir ${PROJECT_SOURCE_DIR}/modules)
 add_library(libgore_common INTERFACE)
 target_include_directories(libgore_common
   INTERFACE
-    $<BUILD_INTERFACE:${_project_common_dir}>
-    $<INSTALL_INTERFACE:include/gore>
+
+    $<BUILD_INTERFACE:${_project_common_dir}>  # Теперь указывает на common/
+    $<INSTALL_INTERFACE:include>               # При установке будет include/
 )
 
-install(DIRECTORY ${_project_common_dir}/
-        DESTINATION include/gore
-        FILES_MATCHING PATTERN "*.hpp"
+install(DIRECTORY ${_project_common_dir}/gore
+        DESTINATION include
 
+        FILES_MATCHING PATTERN "*.hpp"
 )
 
 ## Export libgore_common into GORETargets so modules can link PUBLIC to it
@@ -119,7 +132,7 @@ foreach(module IN LISTS _gore_module_targets)
 
   foreach(rel_hdr IN LISTS module_headers)
 
-    set(src ${module_dir}/${rel_hdr})
+    set(src ${module_dir}/include/${rel_hdr})
     get_filename_component(rel_path ${rel_hdr} PATH)
     install(FILES ${src}
             DESTINATION include/gore/${module}/${rel_path}
@@ -130,6 +143,7 @@ foreach(module IN LISTS _gore_module_targets)
   ## Set output name prefix and install the library into export set
   string(CONCAT export_name "gore_${module}")
   set_target_properties(${module} PROPERTIES OUTPUT_NAME ${export_name})
+  set_target_properties(${module} PROPERTIES PUBLIC_HEADER "${${module}_public_headers}") 
 
   install(TARGETS ${module}
           EXPORT GORETargets
@@ -137,6 +151,27 @@ foreach(module IN LISTS _gore_module_targets)
           LIBRARY DESTINATION lib/gore
           RUNTIME DESTINATION bin/gore
   )
+
+  set_target_properties(${module} PROPERTIES
+    INSTALL_RPATH "$ORIGIN/../lib"
+    SKIP_BUILD_RPATH TRUE
+  )
+  
+  ## Define paths to libraries
+  if(WIN32)
+    # Windows
+    set_target_properties(${module} PROPERTIES
+      IMPORTED_IMPLIB "${CMAKE_INSTALL_PREFIX}/lib/gore/$<TARGET_LINKER_FILE_NAME:${module}>"
+      IMPORTED_LOCATION "${CMAKE_INSTALL_PREFIX}/bin/$<TARGET_FILE_NAME:${module}>"
+    )
+  else()
+    # Unix
+    set_target_properties(${module} PROPERTIES
+      IMPORTED_LOCATION "${CMAKE_INSTALL_PREFIX}/lib/gore/$<TARGET_FILE_NAME:${module}>"
+    )
+
+  endif()
+
 endforeach()
 
 
@@ -158,6 +193,7 @@ install(
 ## ------------------------------------------------------------------------
 ## ## Generate and install Config files for find_package
 ## ------------------------------------------------------------------------
+
 configure_package_config_file(
   "${CMAKE_CURRENT_SOURCE_DIR}/cmake/GOREConfig.cmake.in"
   "${CMAKE_CURRENT_BINARY_DIR}/GOREConfig.cmake"
