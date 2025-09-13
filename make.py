@@ -114,12 +114,15 @@ def main():
     # Install
     subprocess.run(["cmake", "--install", "out", "--config", args.build_type], check=True)
 
-    try:
-        # Move compile_commands to root
-        shutil.move("out/compile_commands.json", ".")
-    except:
-        print(sys.exc_info())
-        print("Cannot move compile_commands.json to root folder")
+    if (platform.system() == "Linux"):
+        try:
+            if (os.path.isfile("compile_commands.json")):
+                os.remove("compile_commands.json")
+            # Move compile_commands to root
+            shutil.move("out/compile_commands.json", ".")
+        except:
+            print(sys.exc_info())
+            print("Cannot move compile_commands.json to root folder")
 
     
 
