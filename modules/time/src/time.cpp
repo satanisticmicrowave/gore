@@ -8,14 +8,10 @@
  */
 
 #include <gore/module_registry.hpp>
-#include <iostream>
 
 namespace gore::time {
 
-bool initialize() {
-  std::cout << "Hello, world from time module!\n";
-  return true;
-}
+bool initialize() { return true; }
 
 } // namespace gore::time
 

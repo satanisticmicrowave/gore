@@ -8,6 +8,10 @@
  */
 
 #include "../include/core.hpp"
-#include <iostream>
+#include <gore/module_registry.hpp>
 
-void hello() { std::cout << "Hello, world!\n"; }
+namespace gore::core {
+bool initialize() { return true; }
+} // namespace gore::core
+
+GORE_REGISTER_MODULE(core)
