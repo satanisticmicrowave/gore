@@ -6,12 +6,3 @@
  *
  * ~ gore
  */
-
-#include "../include/core.hpp"
-#include <gore/module_registry.hpp>
-
-namespace gore::core {
-bool initialize() { return true; }
-} // namespace gore::core
-
-GORE_REGISTER_MODULE(core)

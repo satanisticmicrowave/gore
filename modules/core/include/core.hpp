@@ -14,6 +14,6 @@
 
 #include <gore/gore_api.hpp>
 
-void GORE_API hello();
+GORE_API void hello();
 
 #endif // GORE_CORE_HPP_630992

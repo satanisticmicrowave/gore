@@ -6,13 +6,3 @@
  *
  * ~ gore
  */
-
-#include <gore/module_registry.hpp>
-
-namespace gore::time {
-
-bool initialize() { return true; }
-
-} // namespace gore::time
-
-GORE_REGISTER_MODULE(time)
