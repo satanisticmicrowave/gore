@@ -4,7 +4,7 @@
  * Date: 2025-09-14 01:20:24
  * Package: modules/time/include/time.hpp
  *
- * --
+ * Time module
  *
  * ~ gore
  */
