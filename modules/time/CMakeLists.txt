@@ -40,6 +40,7 @@ file(GLOB_RECURSE _time_priv_headers
 add_library(time SHARED
     ${_time_src}
     ${_time_priv_headers}
+    $<TARGET_OBJECTS:common_stubs>
 )
 
 ## Add export definition
