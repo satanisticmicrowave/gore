@@ -82,5 +82,5 @@ set(_time_public_headers ${_time_all_headers} PARENT_SCOPE)
 ## ------------------------------------------------------------------------
 ## link libgore_common automatically via root umbrella
 target_link_libraries(time
-    PUBLIC libgore_common
+    PUBLIC libgore_common core
 )

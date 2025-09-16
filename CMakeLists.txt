@@ -56,8 +56,8 @@ add_library(libgore_common INTERFACE)
 target_include_directories(libgore_common
   INTERFACE
 
-    $<BUILD_INTERFACE:${_project_common_dir}>  # Теперь указывает на common/
-    $<INSTALL_INTERFACE:include>               # При установке будет include/
+    $<BUILD_INTERFACE:${_project_common_dir}>  
+    $<INSTALL_INTERFACE:include>
 )
 
 install(DIRECTORY ${_project_common_dir}/gore
@@ -103,6 +103,15 @@ foreach(module IN LISTS _gore_module_targets)
   add_library(GORE::${module} ALIAS ${module})
   list(APPEND GORE_TARGETS ${module})
 endforeach()
+
+## Sort GORE_TARGETS, set core target to first place
+
+list(FIND GORE_TARGETS "core" _core_index)
+
+if(_core_index GREATER -1)
+  list(REMOVE_AT GORE_TARGETS ${_core_index})
+  list(INSERT GORE_TARGETS 0 "core")
+endif()
 
 ## Create umbrella target that links all modules (common is pulled by modules)
 add_library(Gore INTERFACE)

@@ -13,18 +13,21 @@
 #define GORE_AUTOEXEC_HPP_803186
 
 #if defined(_MSC_VER)
-#define GORE_PRIORITY_HIGHEST A // NOLINT(cppcoreguidelines-macro-usage)
-#define GORE_PRIORITY_HIGH D    // NOLINT(cppcoreguidelines-macro-usage)
-#define GORE_PRIORITY_MEDIUM M  // NOLINT(cppcoreguidelines-macro-usage)
-#define GORE_PRIORITY_LOW T     // NOLINT(cppcoreguidelines-macro-usage)
-#define GORE_PRIORITY_LOWEST Z  // NOLINT(cppcoreguidelines-macro-usage)
-#elif defined(__GNUC__) || defined(__clang__)
-#define GORE_PRIORITY_HIGHEST 101 // NOLINT(cppcoreguidelines-macro-usage)
-#define GORE_PRIORITY_HIGH 250    // NOLINT(cppcoreguidelines-macro-usage)
+#define GORE_PRIORITY_HIGHEST D
+#define GORE_PRIORITY_HIGH G
+#define GORE_PRIORITY_MEDIUM M
+#define GORE_PRIORITY_LOW T
+#define GORE_PRIORITY_LOWEST Z
 
-#define GORE_PRIORITY_MEDIUM 500   // NOLINT(cppcoreguidelines-macro-usage)
-#define GORE_PRIORITY_LOW 1000     // NOLINT(cppcoreguidelines-macro-usage)
-#define GORE_PRIORITY_LOWEST 65535 // NOLINT(cppcoreguidelines-macro-usage)
+#define GORE_PRIORITY_MODULE_INITIALIZE C
+#elif defined(__GNUC__) || defined(__clang__)
+#define GORE_PRIORITY_HIGHEST 202
+#define GORE_PRIORITY_HIGH 250
+#define GORE_PRIORITY_MEDIUM 500
+#define GORE_PRIORITY_LOW 1000
+#define GORE_PRIORITY_LOWEST 65535
+
+#define GORE_PRIORITY_MODULE_INITIALIZE 201
 #else
 
 #error "Unsupported compiler: define GORE_PRIORITY_*"
@@ -56,5 +59,8 @@
 
 #define GORE_AUTOEXEC_PRIO(p)                                                  \
   GORE_AUTOEXEC_1(p) // NOLINT(cppcoreguidelines-macro-usage)
+
+#define GORE_AUTOEXEC_MODULE_INITIALIZE                                        \
+  GORE_AUTOEXEC_1(GORE_PRIORITY_MODULE_INITIALIZE)
 
 #endif // GORE_AUTOEXEC_HPP_803186
