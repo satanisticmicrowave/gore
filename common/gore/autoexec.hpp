@@ -20,8 +20,6 @@
 #define GORE_PRIORITY_LOWEST Z
 
 #define GORE_PRIORITY_MODULE_INITIALIZE C
-#define GORE_PRIORITY_WEAK_REDEF B
-#define GORE_PRIORITY_DEFINE_STUB A
 #elif defined(__GNUC__) || defined(__clang__)
 #define GORE_PRIORITY_HIGHEST 202
 #define GORE_PRIORITY_HIGH 250
@@ -30,8 +28,6 @@
 #define GORE_PRIORITY_LOWEST 65535
 
 #define GORE_PRIORITY_MODULE_INITIALIZE 201
-#define GORE_PRIORITY_WEAK_REDEF 150
-#define GORE_PRIORITY_DEFINE_STUB 101
 #else
 
 #error "Unsupported compiler: define GORE_PRIORITY_*"
@@ -64,8 +60,6 @@
 #define GORE_AUTOEXEC_PRIO(p)                                                  \
   GORE_AUTOEXEC_1(p) // NOLINT(cppcoreguidelines-macro-usage)
 
-#define GORE_AUTOEXEC_DEFINE_STUB GORE_AUTOEXEC_1(GORE_PRIORITY_DEFINE_STUB)
-#define GORE_AUTOEXEC_WEAK_REDEF GORE_AUTOEXEC_1(GORE_PRIORITY_WEAK_REDEF)
 #define GORE_AUTOEXEC_MODULE_INITIALIZE                                        \
   GORE_AUTOEXEC_1(GORE_PRIORITY_MODULE_INITIALIZE)
 

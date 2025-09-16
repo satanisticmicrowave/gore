@@ -38,7 +38,6 @@ file(GLOB_RECURSE _core_priv_headers
 add_library(core SHARED
     ${_core_src}
     ${_core_priv_headers}
-    $<TARGET_OBJECTS:common_stubs>
 )
 
 ## Add export definition

@@ -40,7 +40,6 @@ file(GLOB_RECURSE _time_priv_headers
 add_library(time SHARED
     ${_time_src}
     ${_time_priv_headers}
-    $<TARGET_OBJECTS:common_stubs>
 )
 
 ## Add export definition
@@ -83,5 +82,5 @@ set(_time_public_headers ${_time_all_headers} PARENT_SCOPE)
 ## ------------------------------------------------------------------------
 ## link libgore_common automatically via root umbrella
 target_link_libraries(time
-    PUBLIC libgore_common
+    PUBLIC libgore_common core
 )
