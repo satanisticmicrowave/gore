@@ -74,7 +74,7 @@ install(TARGETS libgore_common
 ## ------------------------------------------------------------------------
 ## ## COMMON STUBS (weak realizations for common target)
 ## ------------------------------------------------------------------------
-file(GLOB _common_src ${_project_common_dir}/stubs/*.cpp)
+file(GLOB_RECURSE _common_src ${_project_common_dir}/stubs/*.cpp)
 add_library(common_stubs OBJECT ${_common_src})
 target_link_libraries(common_stubs PUBLIC libgore_common)
 set_target_properties(common_stubs PROPERTIES POSITION_INDEPENDENT_CODE ON)

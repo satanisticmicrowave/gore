@@ -7,7 +7,6 @@
  * ~ gore
  */
 
-#include <gore/autoexec.hpp>
 #include <gore/module_registry.hpp>
 
-GORE_AUTOEXEC void init() { gore::register_module("time"); }
+GORE_REGISTER_MODULE(time)
