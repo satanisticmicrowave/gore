@@ -12,8 +12,6 @@
 #ifndef GORE_CORE_HPP_630992
 #define GORE_CORE_HPP_630992
 
-#include <gore/gore_api.hpp>
-
-GORE_API void hello();
+void hello();
 
 #endif // GORE_CORE_HPP_630992

@@ -6,7 +6,3 @@
  *
  * ~ gore
  */
-
-#include <gore/module_registry.hpp>
-
-GORE_REGISTER_MODULE(core)
